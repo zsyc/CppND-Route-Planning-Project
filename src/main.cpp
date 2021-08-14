@@ -56,12 +56,12 @@ int main(int argc, const char **argv)
     // user input for these values using std::cin. Pass the user input to the
     // RoutePlanner object below in place of 10, 10, 90, 90.
     float start_x, start_y, end_x, end_y;
+    auto range = [](int x){return (x>=0 && x<=100);};
     do{
         std::cout << "Please input the coordinate: start_x start_y end_x end_y in the range 0~100:\n";
         std::cin >> start_x >> start_y >> end_x >>end_y;
     }
-    while (start_x >= 0 and start_y >= 0 and end_x >=0 and end_y>=0 \
-           and start_x <=100 and start_y <=100 and end_x <=100 and end_y<=100);
+    while (!(range(start_x) && range(start_y) && range(end_x) && range(end_y)));
     
     // Build Model.
     RouteModel model{osm_data};
